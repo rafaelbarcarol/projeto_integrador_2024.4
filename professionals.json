@@ -1,6 +1,6 @@
 [
   {
-    "foto": "/src/woman.jpg",
+    "foto": "../src/woman.jpg",
     "nome": "Ana",
     "sobrenome": "Silva",
     "profissao": "Nutricionista",
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "foto": "/src/men.jpg",
+    "foto": "../src/men.jpg",
     "nome": "Pedro",
     "sobrenome": "Lima",
     "profissao": "Nutricionista",
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "foto": "/src/woman.jpg",
+    "foto": "../src/woman.jpg",
     "nome": "Mariana",
     "sobrenome": "Costa",
     "profissao": "Psicólogo",
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "foto": "/src/men.jpg",
+    "foto": "../src/men.jpg",
     "nome": "Lucas",
     "sobrenome": "Souza",
     "profissao": "Psicólogo",
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "foto": "/src/woman.jpg",
+    "foto": "../src/woman.jpg",
     "nome": "Julia",
     "sobrenome": "Fernandes",
     "profissao": "Personal Trainer",
@@ -95,7 +95,7 @@
     ]
   },
   {
-    "foto": "/src/men.jpg",
+    "foto": "../src/men.jpg",
     "nome": "Ricardo",
     "sobrenome": "Almeida",
     "profissao": "Personal Trainer",
