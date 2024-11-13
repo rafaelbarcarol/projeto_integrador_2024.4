@@ -102,6 +102,14 @@
       </div>
     </div>
 
+    <!-- Toasts -->
+    <div
+      id="toastMessage"
+      class="fixed bottom-5 left-1/2 transform -translate-x-1/2 mb-4 w-[90%] max-w-md bg-red-500 text-white text-center p-3 rounded-md shadow-lg opacity-0 transition-opacity duration-300"
+    >
+      <span id="toastText">Mensagem de feedback</span>
+    </div>
+
     <script>
       const showConfirmationButton = document.getElementById(
         "showConfirmationButton"
@@ -120,6 +128,19 @@
         "toggleRepeatPassword"
       );
 
+      const toastMessage = document.getElementById("toastMessage");
+      const toastText = document.getElementById("toastText");
+
+      function showToast(message) {
+        toastText.textContent = message;
+        toastMessage.classList.remove("opacity-0");
+        toastMessage.classList.add("opacity-100");
+        setTimeout(() => {
+          toastMessage.classList.remove("opacity-100");
+          toastMessage.classList.add("opacity-0");
+        }, 3000);
+      }
+
       function validarSenhas() {
         return senhaInput.value === repetirSenhaInput.value;
       }
@@ -128,7 +149,7 @@
         if (validarSenhas()) {
           confirmationModal.classList.remove("hidden");
         } else {
-          alert("As senhas não coincidem. Por favor, tente novamente.");
+          showToast("As senhas não coincidem. Por favor, tente novamente.");
         }
       });
 
@@ -137,7 +158,7 @@
       });
 
       confirmDeleteButton.addEventListener("click", function () {
-        alert("Conta excluída com sucesso!");
+        showToast("Conta excluída com sucesso!");
         window.location.href = "login.html";
       });
 
