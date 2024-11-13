@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link href="../dist/styles.css" rel="stylesheet" />
-    <!-- Verifique o caminho do CSS -->
   </head>
   <body
     class="flex flex-col items-center justify-center min-h-screen bg-custom-blue text-white"
   >
-    <h1 class="text-3xl font-bold mb-8">Login</h1>
+    <h1 class="text-3xl font-bold mb-6">Login</h1>
+
     <form
       action="home.html"
       method="GET"
-      class="bg-white p-6 rounded-lg shadow-lg w-96"
+      class="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-96"
     >
       <div class="mb-4">
         <label for="email" class="block text-sm font-medium text-gray-700"
@@ -24,9 +24,10 @@
           type="email"
           id="email"
           required
-          class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 text-black"
+          class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         />
       </div>
+
       <div class="mb-4">
         <label for="senha" class="block text-sm font-medium text-gray-700"
           >Senha</label
@@ -35,12 +36,13 @@
           type="password"
           id="senha"
           required
-          class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 text-black"
+          class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         />
       </div>
+
       <button
         type="submit"
-        class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+        class="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
       >
         Entrar
       </button>
