@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="mb-6">
+        <div class="mb-4">
           <label
             for="repetirSenha"
             class="block text-gray-700 text-sm font-medium mb-2"
@@ -58,6 +58,24 @@
             >
               👁️
             </span>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="email"
+            class="block text-gray-700 text-sm font-medium mb-2"
+            >Confirmação de Email</label
+          >
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              placeholder="Digite seu email"
+            />
           </div>
         </div>
 
@@ -125,6 +143,7 @@
 
       const senhaInput = document.getElementById("senha");
       const repetirSenhaInput = document.getElementById("repetirSenha");
+      const emailInput = document.getElementById("email");
 
       const togglePassword = document.getElementById("togglePassword");
       const toggleRepeatPassword = document.getElementById(
@@ -134,25 +153,54 @@
       const toastMessage = document.getElementById("toastMessage");
       const toastText = document.getElementById("toastText");
 
+      let toastQueue = [];
+      let isToastVisible = false;
+
       function showToast(message) {
-        toastText.textContent = message;
-        toastMessage.classList.remove("opacity-0");
-        toastMessage.classList.add("opacity-100");
-        setTimeout(() => {
-          toastMessage.classList.remove("opacity-100");
-          toastMessage.classList.add("opacity-0");
-        }, 3000);
+        toastQueue.push(message);
+        if (!isToastVisible) {
+          displayNextToast();
+        }
+      }
+
+      function displayNextToast() {
+        if (toastQueue.length > 0) {
+          isToastVisible = true;
+          const message = toastQueue.shift();
+          toastText.textContent = message;
+          toastMessage.classList.remove("opacity-0");
+          toastMessage.classList.add("opacity-100");
+          setTimeout(() => {
+            toastMessage.classList.remove("opacity-100");
+            toastMessage.classList.add("opacity-0");
+            isToastVisible = false;
+            displayNextToast();
+          }, 3000);
+        }
       }
 
       function validarSenhas() {
         return senhaInput.value === repetirSenhaInput.value;
       }
 
+      function validarPreenchimentos() {
+        return (
+          senhaInput.value.trim() !== "" &&
+          repetirSenhaInput.value.trim() !== "" &&
+          emailInput.value.trim() !== "" &&
+          /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(
+            emailInput.value
+          )
+        );
+      }
+
       showConfirmationButton.addEventListener("click", function () {
-        if (validarSenhas()) {
-          confirmationModal.classList.remove("hidden");
-        } else {
+        if (!validarPreenchimentos()) {
+          showToast("Por favor, preencha todos os campos corretamente.");
+        } else if (!validarSenhas()) {
           showToast("As senhas não coincidem. Por favor, tente novamente.");
+        } else {
+          confirmationModal.classList.remove("hidden");
         }
       });
 
